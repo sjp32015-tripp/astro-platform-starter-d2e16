@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Member Login - Ground Game Guidance">
+  <div class="login-container">
+    <div class="login-card">
+      <h1>Member Login</h1>
+      <p class="subtitle">Access your community account</p>
+
+      <div class="auth-placeholder">
+        <p class="info-text">🔐 Authentication system needs to be set up</p>
+        
+        <div class="options">
+          <h3>Recommended Options:</h3>
+          <ul>
+            <li><strong>Netlify Identity</strong> - Easy, free tier available</li>
+            <li><strong>Supabase Auth</strong> - Full-featured, good free tier</li>
+            <li><strong>Auth0</strong> - Enterprise-grade solution</li>
+          </ul>
+        </div>
+
+        <div class="temp-links">
+          <h3>Temporary Navigation:</h3>
+          <a href="/" class="btn">← Back to Home</a>
+          <a href="/community" class="btn btn-primary">View Community Hub →</a>
+        </div>
+
+        <div class="implementation-note">
+          <h4>Implementation Steps:</h4>
+          <ol>
+            <li>Choose an auth provider (Netlify Identity recommended)</li>
+            <li>Set up authentication in Netlify dashboard</li>
+            <li>Add the Netlify Identity widget to your site</li>
+            <li>Protect the /community route with authentication</li>
+            <li>Add role-based access (admin vs member)</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .login-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .login-card {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 16px;
+    padding: 3rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .auth-placeholder {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 2rem;
+  }
+
+  .info-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #2563eb;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  .options {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .options h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .options ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .options li {
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    color: #555;
+  }
+
+  .options li strong {
+    color: #2563eb;
+  }
+
+  .temp-links {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .temp-links h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem;
+    background: #6b7280;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .btn:hover {
+    background: #4b5563;
+  }
+
+  .btn-primary {
+    background: #2563eb;
+  }
+
+  .btn-primary:hover {
+    background: #1d4ed8;
+  }
+
+  .implementation-note {
+    background: rgba(59, 130, 246, 0.1);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .implementation-note h4 {
+    color: #2563eb;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .implementation-note ol {
+    color: #555;
+    line-height: 1.8;
+  }
+
+  .implementation-note li {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .login-card {
+      padding: 2rem 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .btn {
+      display: block;
+      margin: 0.5rem 0;
+    }
+  }
+</style>

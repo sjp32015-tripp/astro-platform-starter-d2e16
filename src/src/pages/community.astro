@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// In a real implementation, this would check if user is authenticated
+// For now, this is the structure for the community page
+const videos = [
+  // You'll add your YouTube video IDs here
+  // Example: { id: 'dQw4w9WgXcQ', title: 'Video Title', description: 'Video description' }
+];
+---
+
+<Layout title="Community Hub - Ground Game Guidance">
+  <div class="community-container">
+    <h1>Welcome to the Community Hub</h1>
+    <p class="subtitle">Access all training videos and resources</p>
+
+    <div class="video-section">
+      <h2>Training Videos</h2>
+      
+      {videos.length === 0 ? (
+        <div class="no-videos">
+          <p>No videos available yet. Check back soon!</p>
+        </div>
+      ) : (
+        <div class="video-grid">
+          {videos.map((video) => (
+            <div class="video-card">
+              <div class="video-embed">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <h3>{video.title}</h3>
+              {video.description && <p>{video.description}</p>}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <div class="admin-note">
+      <h3>For Admin Use:</h3>
+      <p>To add videos, edit the <code>videos</code> array in <code>src/pages/community.astro</code></p>
+      <p>Add objects like: <code>{`{ id: 'YOUTUBE_VIDEO_ID', title: 'Your Title', description: 'Description' }`}</code></p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .community-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 3rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+
+  .video-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .video-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 0.5rem;
+  }
+
+  .no-videos {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    font-size: 1.2rem;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .video-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .video-embed {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .video-card h3 {
+    font-size: 1.3rem;
+    color: #333;
+    padding: 1rem;
+    margin: 0;
+  }
+
+  .video-card p {
+    color: #666;
+    padding: 0 1rem 1rem 1rem;
+    margin: 0;
+  }
+
+  .admin-note {
+    background: rgba(59, 130, 246, 0.1);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .admin-note h3 {
+    color: white;
+    margin-top: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+
+  .admin-note p {
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0.5rem 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  }
+
+  .admin-note code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #FFD700;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .video-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .community-container {
+      padding: 1rem;
+    }
+  }
+</style>
