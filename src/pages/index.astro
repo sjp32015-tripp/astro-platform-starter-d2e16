@@ -1,19 +1,191 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Markdown from '../components/Markdown.astro';
-
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
 ---
 
-<Layout title="Welcome to Astro.">
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Steven Powers - Ground Game Guidance">
+  <div class="hero-section">
+    <h1>Steven Powers</h1>
+    <h2>Ground Game Guidance Community</h2>
+    
+    <div class="pricing-container">
+      <div class="pricing-card">
+        <h3>Community Access</h3>
+        <div class="price">$29</div>
+        <ul>
+          <li>Access to Community Hub</li>
+          <li>Watch all training videos</li>
+          <li>Interact with other members</li>
+        </ul>
+        <a href="/.netlify/functions/create-checkout?tier=community" class="btn">Join Community</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <h3>Full Community Access</h3>
+        <div class="price">$79</div>
+        <ul>
+          <li>Everything in Community Access</li>
+          <li>Priority support</li>
+          <li>Exclusive content & resources</li>
+          <li>Direct communication</li>
+        </ul>
+        <a href="/.netlify/functions/create-checkout?tier=full" class="btn btn-featured">Get Full Access</a>
+      </div>
+    </div>
+
+    <div class="login-section">
+      <p>Already a member?</p>
+      <a href="/login" class="btn btn-secondary">Login Here</a>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  .pricing-container {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pricing-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 2rem;
+    min-width: 280px;
+    max-width: 350px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .pricing-card.featured {
+    border: 3px solid #FFD700;
+    transform: scale(1.05);
+  }
+
+  .pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2563eb;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .pricing-card li {
+    padding: 0.5rem 0;
+    color: #555;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .pricing-card li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .btn:hover {
+    background: #1d4ed8;
+  }
+
+  .btn-featured {
+    background: #FFD700;
+    color: #333;
+  }
+
+  .btn-featured:hover {
+    background: #FFC700;
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+  }
+
+  .btn-secondary:hover {
+    background: white;
+  }
+
+  .login-section {
+    margin-top: 2rem;
+  }
+
+  .login-section p {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+
+  @media (max-width: 768px) {
+    .pricing-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pricing-card.featured {
+      transform: scale(1);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
